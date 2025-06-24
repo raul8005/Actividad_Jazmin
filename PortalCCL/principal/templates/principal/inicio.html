@@ -1,0 +1,452 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cámara de Comercio de Loja</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #F0F2F5; /* Fondo ligeramente gris para el cuerpo */
+        }
+
+        /* Barra superior */
+        header {
+            background-color: #0C2D5B;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            height: 50px;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        nav a {
+            color: white; /* Color de texto blanco para los enlaces de navegación */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease; /* Transición suave para el color */
+        }
+
+        nav a:hover {
+            color: #D4AA00; /* Color al pasar el ratón */
+        }
+
+        nav a.button-blue {
+            background-color: #D4AA00; /* Se invierte el color para que sea amarillo */
+            color: #0C2D5B; /* Color de texto azul oscuro */
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a.button-blue:hover {
+            background-color: #ECC74B; /* Un tono más claro de amarillo al pasar el ratón */
+        }
+
+        nav a.button-yellow {
+            background-color: #0C2D5B; /* Se invierte el color para que sea azul */
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a.button-yellow:hover {
+            background-color: #1A4E95; /* Un tono más claro de azul al pasar el ratón */
+        }
+
+        /* Cuerpo principal */
+        .contenido {
+            display: flex;
+            padding: 30px;
+            gap: 30px; /* Espacio entre los elementos */
+            align-items: flex-start; /* Alinea los elementos al inicio */
+            max-width: 1200px; /* Ancho máximo del contenedor */
+            margin: 20px auto; /* Centrar el contenido y agregar margen superior */
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .contenido img {
+            max-width: 65%; /* Ajustado para dar más espacio a la info lateral */
+            height: auto;
+            border-radius: 8px;
+            object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsionarse */
+        }
+
+        .info-lateral {
+            background-color: #0C2D5B;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            flex-grow: 1; /* Permite que el elemento crezca y ocupe el espacio restante */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .info-lateral img {
+            border-radius: 50%;
+            width: 100px; /* Tamaño de la imagen del autor */
+            height: 100px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid #D4AA00; /* Borde amarillo alrededor de la imagen */
+        }
+
+        .info-lateral h3 {
+            margin: 10px 0 5px;
+            font-size: 1.2em;
+            color: #D4AA00; /* Color amarillo para el eslogan */
+        }
+
+        .info-lateral h2 {
+            margin: 5px 0 15px;
+            font-size: 2.5em;
+            color: white;
+            line-height: 1;
+        }
+
+        .info-lateral p {
+            margin: 5px 0;
+            font-size: 0.95em;
+            line-height: 1.5;
+            color: #E0E0E0; /* Un gris más claro para los párrafos */
+        }
+
+        .info-lateral p strong {
+            font-size: 1.1em;
+            color: white;
+        }
+
+        /* Sección de Misión y Visión */
+        .seccion-mision-vision {
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+            padding: 40px 30px;
+            background-color: white;
+            max-width: 1200px;
+            margin: 30px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .caja-mision-vision {
+            background-color: #0C2D5B;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            flex: 1; /* Distribuye el espacio equitativamente */
+            min-width: 300px; /* Ancho mínimo para cada caja */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .caja-mision-vision.vision {
+            background-color: #D4AA00; /* Fondo amarillo para la visión */
+            color: #0C2D5B; /* Texto oscuro para la visión */
+        }
+
+        .caja-mision-vision.vision h3 {
+            color: #0C2D5B; /* Título oscuro para la visión */
+            border-bottom-color: #0C2D5B; /* Borde oscuro para la visión */
+        }
+        .caja-mision-vision.vision p {
+            color: #2e2e2e; /* Texto más oscuro para la visión */
+        }
+
+        .caja-mision-vision:hover {
+            transform: translateY(-5px); /* Pequeño efecto al pasar el ratón */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .caja-mision-vision h3 {
+            color: #D4AA00;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #D4AA00;
+            padding-bottom: 10px;
+            display: inline-block; /* Para que el borde se ajuste al texto */
+        }
+
+        .caja-mision-vision p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #E0E0E0;
+        }
+
+        /* Título de Noticias y Eventos */
+        .titulo-seccion {
+            text-align: center;
+            font-size: 2.2em;
+            color: #0C2D5B;
+            margin: 50px auto 30px auto;
+            font-weight: 700;
+            max-width: 1200px;
+        }
+
+        /* Sección de Noticias */
+        .seccion-noticias {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto 50px auto;
+            flex-wrap: wrap;
+        }
+
+        .noticia-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .noticia-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .noticia-card h5 {
+            color: #0C2D5B;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .noticia-card p {
+            font-size: 0.95em;
+            color: #555;
+        }
+
+
+        /* Pie de página (Footer) */
+        footer {
+            background-color: #0C2D5B;
+            color: white;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+            gap: 30px; /* Espacio entre columnas */
+            margin-top: 50px; /* Margen superior para separarlo de la sección anterior */
+        }
+
+        .footer-columna {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 300px;
+        }
+
+        .footer-columna img.logo-footer {
+            height: 80px;
+            margin-bottom: 15px;
+        }
+
+        .footer-columna p {
+            font-size: 0.95em;
+            line-height: 1.5;
+            margin-top: 0;
+            color: #E0E0E0;
+        }
+
+        .footer-columna h4 {
+            color: white;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            text-align: center;
+            width: 100%; /* Asegura que el título ocupe todo el ancho de la columna */
+        }
+
+        .horario-atencion {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .horario-atencion .icon {
+            width: 40px;
+            height: 40px;
+            background-color: #D4AA00;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .horario-atencion .icon img {
+            width: 25px;
+            height: 25px;
+        }
+
+        .horario-atencion p {
+            margin: 5px 0;
+            font-size: 1em;
+            color: white;
+        }
+
+        .chatbot-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .chatbot-container img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+        }
+
+        .chatbot-container p {
+            font-size: 0.9em;
+            color: #D4AA00;
+            font-weight: bold;
+        }
+
+        /* Estilos responsivos */
+        @media (max-width: 900px) {
+            .contenido, .seccion-mision-vision {
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+            }
+
+            .contenido img {
+                max-width: 100%;
+            }
+
+            .info-lateral, .caja-mision-vision {
+                max-width: 100%;
+                margin-left: 0;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                margin: 5px;
+            }
+
+            footer {
+                flex-direction: column;
+                align-items: center;
+                padding: 30px 15px;
+            }
+
+            .footer-columna {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="{% static 'principal/ccl_logo1.png' %}" alt="Logo Cámara" class="logo">
+    <nav>
+        <a href="#">Acerca de CCL</a>
+        <a href="/servicios/">Nuestros servicios</a>
+        <a href="/contacto/">Contactos</a>
+        <a href="/beneficios/">Beneficios</a>
+        <a href="/noticias/">Noticias</a>
+        <a href="/afiliacion/" class="button-blue">Afíliate</a>
+        <a href="#" class="button-yellow">Soy socio</a>
+    </nav>
+</header>
+
+<div class="contenido">
+    <img src="{% static 'principal/reunion_emp.png' %}" alt="Reunión empresarial">
+    
+    <div class="info-lateral">
+        <img src="{% static 'principal/empresario.png' %}" alt="Foto autor">
+        <h3>Buscamos la excelencia.</h3>
+        <h2>106 años</h2>
+        <p><strong>Apoyando el crecimiento<br>de pequeños y grandes empresarios</strong></p>
+        <p>Mediante acuerdos de cooperación y convenios brindamos a nuestros socios herramientas necesarias para su desarrollo comercial.</p>
+    </div>
+</div>
+
+<div class="seccion-mision-vision">
+    <div class="caja-mision-vision">
+        <h3>Misión</h3>
+        <p>Impulsar y fortalecer el desarrollo económico y empresarial de la provincia de Loja, brindando servicios de calidad, promoviendo la capacitación, innovación y representación gremial, para el beneficio de nuestros asociados y la comunidad.</p>
+    </div>
+    <div class="caja-mision-vision vision">
+        <h3>Visión</h3>
+        <p>Ser el referente principal del desarrollo empresarial en la provincia de Loja, reconocida por su liderazgo, innovación y compromiso con el crecimiento sostenible de sus socios y el fomento de un entorno favorable para los negocios.</p>
+    </div>
+</div>
+
+<h2 class="titulo-seccion">Noticias y eventos</h2>
+
+<div class="seccion-noticias">
+    <div class="noticia-card">
+        <h5>Noticia 1</h5>
+        <p>Breve descripción de la noticia 1 o un resumen del evento.</p>
+    </div>
+    <div class="noticia-card">
+        <h5>Noticia 2</h5>
+        <p>Breve descripción de la noticia 2 o un resumen del evento.</p>
+    </div>
+    <div class="noticia-card">
+        <h5>Noticia 3</h5>
+        <p>Breve descripción de la noticia 3 o un resumen del evento.</p>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-columna">
+        <img src="{% static 'principal/ccl_logo1.png' %}" alt="Logo Cámara" class="logo-footer">
+        <p>Como gremio buscamos siempre el progreso y beneficio para todos nuestros socios, seguimos trabajando para el engrandecimiento de nuestra ciudad, provincia y país.</p>
+    </div>
+
+    <div class="footer-columna">
+        <h4>Horario de atención:</h4>
+        <div class="horario-atencion">
+            <div class="icon">
+                <img src="" alt="Icono reloj">
+            </div>
+            <p>08h30 a 12h30</p>
+            <p>14h00 a 18h00</p>
+            <p>Lunes a Viernes</p>
+        </div>
+    </div>
+
+    <div class="footer-columna">
+        <div class="chatbot-container">
+            <img src="{% static 'principal/ccl_logo1.png' %}"alt="Icono Chatbot">
+            <p>Conoce más sobre nosotros</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

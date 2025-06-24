@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión - Cámara de Comercio de Loja</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #0C2D5B; /* Fondo azul oscuro como la imagen */
+            display: flex;
+            flex-direction: column; /* Para colocar el pie de página abajo */
+            min-height: 100vh; /* Ocupa el 100% de la altura de la ventana */
+            align-items: center; /* Centrar horizontalmente el contenido principal */
+            justify-content: center; /* Centrar verticalmente el contenido principal */
+        }
+
+        .contenedor-principal {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            display: flex;
+            gap: 60px; /* Espacio entre el logo y el formulario */
+            align-items: center;
+            max-width: 900px; /* Ancho máximo del contenedor */
+            width: 90%; /* Ancho responsivo */
+            margin: 20px auto; /* Centrar y agregar margen */
+            position: relative; /* Para posicionar el botón Regresar */
+        }
+
+        .regresar {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            text-decoration: none;
+            color: #0C2D5B; /* Color del texto Regresar */
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        .regresar:hover {
+            color: #D4AA00;
+        }
+
+        .seccion-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0; /* Evita que el logo se encoja */
+        }
+
+        .seccion-logo img {
+            width: 120px; /* Tamaño del logo */
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        .seccion-logo .texto-logo {
+            font-size: 2em;
+            color: #0C2D5B;
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .seccion-formulario {
+            flex-grow: 1; /* Permite que el formulario ocupe el espacio restante */
+            max-width: 400px; /* Ancho máximo para el formulario */
+            margin-top: 30px; /* Espacio para el botón Regresar */
+        }
+
+        .seccion-formulario h2 {
+            color: #0C2D5B;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+            padding-right: 40px; /* Espacio para el icono de usuario */
+        }
+
+        .seccion-formulario h2::after {
+            content: '👤'; /* Icono de usuario */
+            font-size: 0.8em;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #0C2D5B;
+        }
+
+        .grupo-campo {
+            margin-bottom: 20px;
+        }
+
+        .grupo-campo label {
+            display: block;
+            margin-bottom: 8px;
+            color: #0C2D5B;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .grupo-campo input {
+            width: calc(100% - 20px); /* Resta el padding */
+            padding: 12px 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            background-color: #E6EAF0; /* Color de fondo del input */
+            color: #333;
+            font-size: 1em;
+            box-sizing: border-box; /* Incluye padding y border en el ancho */
+        }
+
+        .grupo-campo input::placeholder {
+            color: #999;
+        }
+
+        .boton-entrar {
+            width: 100%;
+            padding: 12px 20px;
+            background-color: #D4AA00; /* Color del botón Entrar */
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .boton-entrar:hover {
+            background-color: #ECC74B;
+        }
+
+        .texto-inferior {
+            color: white; /* Color del texto inferior del body */
+            font-size: 0.9em;
+            text-align: center;
+            margin-top: 30px; /* Espacio con el contenedor principal */
+            margin-bottom: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .contenedor-principal {
+                flex-direction: column;
+                padding: 30px;
+                gap: 30px;
+                max-width: 95%;
+            }
+
+            .seccion-logo {
+                margin-bottom: 20px;
+            }
+
+            .seccion-formulario {
+                width: 100%;
+                max-width: none; /* Eliminar el ancho máximo para dispositivos pequeños */
+                margin-top: 0;
+            }
+
+            .seccion-formulario h2 {
+                font-size: 1.8em;
+                padding-right: 0; /* No se necesita espacio extra para el icono en móviles */
+            }
+
+            .seccion-formulario h2::after {
+                display: none; /* Ocultar el icono en el título para pantallas pequeñas */
+            }
+
+            .regresar {
+                top: 15px;
+                left: 15px;
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contenedor-principal {
+                padding: 20px;
+            }
+
+            .seccion-logo img {
+                width: 100px;
+            }
+
+            .seccion-logo .texto-logo {
+                font-size: 1.6em;
+            }
+
+            .grupo-campo label {
+                font-size: 1em;
+            }
+
+            .grupo-campo input, .boton-entrar {
+                padding: 10px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenedor-principal">
+        <a href="{% url 'inicio' %}" class="regresar">Regresar</a>  <div class="seccion-logo">
+            <img src="https://i.imgur.com/jMwRkWY.png" alt="Logo Cámara de Comercio de Loja">
+            <div class="texto-logo">CÁMARA DE COMERCIO DE LOJA</div>
+        </div>
+
+        <div class="seccion-formulario">
+            <h2>Inicio de Sesión </h2>
+            <form>
+                <div class="grupo-campo">
+                    <label for="correo">Correo electrónico:</label>
+                    <input type="email" id="correo" name="correo" placeholder="XXXXXXXXXXXXX" required>
+                </div>
+                <div class="grupo-campo">
+                    <label for="contrasena">Contraseña:</label>
+                    <input type="password" id="contrasena" name="contrasena" placeholder="XXXXXXXXXXXXX" required>
+                </div>
+                <button type="submit" class="boton-entrar">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <p class="texto-inferior">Bienvenido socio, ingresa y descubre nuevas cosas que tenemos en cámara de comercio de Loja.</p>
+
+</body>
+</html>
